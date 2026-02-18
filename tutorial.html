@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- SITE TITTLE -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>IEEE SILCON 2026</title>
+
+    <!-- PLUGINS CSS STYLE -->
+    <!-- Bootstrap -->
+    <link href="plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="plugins/font-awsome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Magnific Popup -->
+    <link href="plugins/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <!-- Slick Carousel -->
+    <link href="plugins/slick/slick.css" rel="stylesheet">
+    <link href="plugins/slick/slick-theme.css" rel="stylesheet">
+    <!-- CUSTOM CSS -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- FAVICON -->
+    <link href="images/favicon.png" rel="shortcut icon">
+
+    <link href="custome.css" rel="stylesheet">
+
+    <!-- <link rel="stylesheet" href="https://assets.css-tricks.ir/font/font.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&amp;display=swapps://github.com/produle/MockFlowFont/blob/master/MockFlowFont1/dist/MockFlowFont1.woff"> -->
+    <style>
+        :root {
+            --surface-color: #fff;
+            --curve: 40;
+        }
+
+        .tutorial-section {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .tutorial-card {
+            position: relative;
+            display: block;
+            height: 100%;
+            border-radius: calc(var(--curve)* 1px);
+            overflow: hidden;
+            text-decoration: none;
+            width: 20rem;
+            box-shadow: 0px 0px 7px 0px;
+        }
+
+        .card__image {
+            width: 100%;
+            height: auto;
+        }
+
+        .card__overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            border-radius: calc(var(--curve) * 1px);
+            background-color: var(--surface-color);
+            transform: translateY(100%);
+            transition: .2s ease-in-out;
+        }
+
+        .tutorial-card:hover .card__overlay {
+            transform: translateY(0);
+        }
+
+        .card__header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 2em;
+            padding: 1.4em;
+            border-radius: calc(var(--curve) * 1px) 0 0 0;
+            background-color: var(--surface-color);
+            transform: translateY(-100%);
+            transition: .2s ease-in-out;
+        }
+
+        .card__arc {
+            width: 80px;
+            height: 80px;
+            position: absolute;
+            bottom: 100%;
+            right: 0;
+            z-index: 1;
+        }
+
+        .card__arc path {
+            fill: var(--surface-color);
+            d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+        }
+
+        .tutorial-card:hover .card__header {
+            transform: translateY(0);
+        }
+
+        .card__thumb {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .card__title {
+            font-size: 12px;
+            margin: 0 0 .3em;
+            color: #6A515E;
+        }
+
+        .card__tagline {
+            display: block;
+            margin: 1em 0;
+            font-family: "MockFlowFont";
+            font-size: .8em;
+            color: #D7BDCA;
+        }
+
+        .card__status {
+            font-size: .8em;
+            color: #D7BDCA;
+        }
+
+        .card__description {
+            padding: 0 2em 2em;
+            margin: 0;
+            color: #848484;
+            font-family: "MockFlowFont";
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        /* .tutorial-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tutorial-website-card-container {
+            position: relative;
+            width: 20%;
+        }
+
+        .image {
+            opacity: 1;
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: .5s ease;
+            backface-visibility: hidden;
+        }
+
+        .middle {
+            width: 17rem;
+            transition: .5s ease;
+            opacity: 0;
+            position: absolute;
+            top: 76%;
+            left: 37%;
+            transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .tutorial-website-card-container:hover .image {
+            opacity: 0.3;
+        }
+
+        .tutorial-website-card-container:hover .middle {
+            opacity: 1;
+        }
+
+        .tutorial-website-card-container-text {
+            color: black;
+            font-size: 13px;
+        }
+
+        .tutorial-website-img-card-topic {
+            width: 20%;
+        } */
+
+        /* .tutorial-website-card {
+            width: 17rem;
+        }
+
+        .tutorial-website-img-card {
+            border-radius: 9%;
+            box-shadow: 0px 0px 6px 0px;
+            height: 20rem;
+            background: url("./images/tutorial/dac.jpg") no-repeat;
+        }
+
+        .tutorial-website-img-card p:hover {
+            display: none;
+        }
+
+        .tutorial-website-img-card p {
+            width: 30%;
+            margin-top: 7rem;
+            position: absolute;
+            z-index: 2;
+        }
+
+        .tutorial-website-img-card-topic {} */
+    </style>
+
+</head>
+
+<body class="body-wrapper">
+
+
+    <!--========================================
+=            Navigation Section            =
+=========================================-->
+
+    <nav class="navbar main-nav border-less fixed-top navbar-expand-lg p-0">
+        <div class="container-fluid p-0">
+            <!-- logo -->
+            <a class="navbar-brand" href="/">
+                <img class="ieee-logo" src="images/Logo_silcon_IEEE.png" alt="IEEE SILCON 2026">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="committee.html">Conference Committee
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="technical_tracks.html">Technical Tracks
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">Information
+                                To Authors</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                                <a class="dropdown-item" href="information_authors.html">Information To Authors</a>
+                                <a class="dropdown-item" href="registration.html">Registration</a>
+                                <a class="dropdown-item" href="camera-ready-and-fee-payment-information.html">Camera
+                                    Ready and Fee
+                                    Payment Information</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- <li class="nav-item">
+                						<a class="nav-link" href="venue.html">Venue</a>
+                					</li> -->
+
+
+                    <!-- <li class="nav-item">
+                						<a class="nav-link" href="registration.html">Registration</a>
+                					</li> -->
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="IEEEYoung.html">IEEE YP</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="wie.html">Women in Engineering</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link  active-navlink" href="tutorial.html">Tutorial</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                </ul>
+                <a href="http://www.nitmanipur.ac.in" class="ticket" target="_blank">
+					<img src="images/nitmanipur_logo.png" alt="ticket">
+
+				</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--====  End of Navigation Section  ====-->
+
+
+
+    <!--================================
+=            Page Title            =
+=================================-->
+
+    <section class="banner-two page-title bg-title overlay-dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <ol class="breadcrumb p-0 m-0">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item active">Tutorial</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--====  End of Page Title  ====-->
+
+
+    <!--==============================
+=            Speakers            =
+===============================-->
+
+    <section class="tutorial-section">
+
+        <div class="tutorial-card">
+            <img src="images/tutorial/36980.jpg" class="card__image" alt="" />
+            <div class="card__overlay">
+                <div class="card__header">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                        <path />
+                    </svg>
+                    <div class="card__header-text">
+                        <h3 class="card__title">Dr. Sujit Kumar Biswas,<br>Former Professor,Jadavpur University.<br>
+						Past Chairman, IEEE Kolkata Section</h3>
+                    </div>
+                </div>
+                <p class="card__description">Topic: Power Electronics
+                </p>
+            </div>
+        </div>
+
+  <!--       <div class="tutorial-card">
+            <img src="images/tutorial/myk.png" class="card__image" alt="" />
+            <div class="card__overlay">
+                <div class="card__header" style="padding: 1.4rem;">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                        <path />
+                    </svg>
+                    <div class="card__header-text">
+                        <h3 class="card__title">Mr. Yugal Kishor,<br>Manager R&D (Hardware)
+                            OGOENERGY India Private Limited
+                        </h3>
+                    </div>
+                </div>
+                <p class="card__description">Topic: Thermal modelling of Power Electronics Converter
+                </p>
+            </div>
+        </div>
+
+        <div class="tutorial-card">
+            <img src="images/tutorial/dkk.png" class="card__image" alt="" />
+            <div class="card__overlay">
+                <div class="card__header" style="padding: 1.8rem;">
+                    <svg class="card__arc" xmlns="http://www.w3.org/2000/svg">
+                        <path />
+                    </svg>
+                    <div class="card__header-text">
+                        <h3 class="card__title">Dr. Kundan Kumar,<br>SMIEEE, Assistant Professor, NIT Manipur
+                        </h3>
+                    </div>
+                </div>
+                <p class="card__description">Topic: Design, Implementation, and Challenges: Dynamic Wireless Charging
+                    Infrastructures for Electric Vehicles
+                </p>
+            </div>
+        </div> -->
+    </section>
+
+
+
+    <!--============================
+=            Footer            =
+=============================-->
+
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="block text-center">
+                        <div class="footer-logo">
+                           
+							<p><span style="color:#ecf0f1"><strong><span style="background-color:#2c3e50">&copy;
+											Copyright IEEE SILCON 2026. All Rights Reserved.</span></strong></span></p>
+							<br>
+							<p><strong>Webmaster: Dr. Moirangthem Dennis (Datacenter, NIT Manipur)</strong></p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- JAVASCRIPTS -->
+    <!-- jQuey -->
+    <script src="plugins/jquery/jquery.js"></script>
+    <!-- Popper js -->
+    <script src="plugins/popper/popper.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Smooth Scroll -->
+    <script src="plugins/smoothscroll/SmoothScroll.min.js"></script>
+    <!-- Isotope -->
+    <script src="plugins/isotope/mixitup.min.js"></script>
+    <!-- Magnific Popup -->
+    <script src="plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <!-- Slick Carousel -->
+    <script src="plugins/slick/slick.min.js"></script>
+    <!-- SyoTimer -->
+    <script src="plugins/syotimer/jquery.syotimer.min.js"></script>
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="plugins/google-map/gmap.js"></script>
+    <!-- Custom Script -->
+    <script src="js/custom.js"></script>
+</body>
+
+</html>

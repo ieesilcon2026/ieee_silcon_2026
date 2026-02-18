@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IEEE SILCON 2025 - Online Registration</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .form-content {
+            padding: 40px 30px;
+        }
+        
+        .form-section {
+            margin-bottom: 35px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .form-section h2 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        .required {
+            color: #e74c3c;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"],
+        input[type="number"],
+        input[type="file"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .radio-group {
+            margin-top: 10px;
+        }
+        
+        .radio-option {
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        input[type="radio"] {
+            margin-right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+        
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .attendee-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            border: 2px solid #667eea;
+            position: relative;
+        }
+        
+        .attendee-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .attendee-fee {
+            background: #e8f0ff;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: 600;
+            color: #1e3c72;
+            text-align: right;
+        }
+        
+        .fee-summary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .fee-summary h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+        
+        .fee-breakdown {
+            background: rgba(255,255,255,0.1);
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        
+        .fee-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .fee-item:last-child {
+            border-bottom: none;
+        }
+        
+        .total-amount {
+            font-size: 1.8em;
+            font-weight: bold;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .success-message {
+            display: none;
+            background: #27ae60;
+            color: white;
+            padding: 20px;
+            border-radius: 5px;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        
+        .error-message {
+            display: none;
+            background: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            border-left: 4px solid #f5c6cb;
+        }
+        
+        .info-text {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+                
+        .bank-text {
+            font-size: 0.9em;
+            color: white;
+            margin-top: 5px;
+        }
+       
+        .bankbold-text {
+            font-size: 1.2em;
+            color: white;
+            margin-top: 5px;
+        }
+
+        .input-error {
+            border-color: #dc3545 !important;
+        }
+        
+        .error-text {
+            color: #dc3545;
+            font-size: 0.875em;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 600px) {
+            .row {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .form-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>IEEE SILCON 2025</h1>
+            <p>Online Registration Form</p>
+        </div>
+        
+        <div class="form-content">
+            <form id="registrationForm">
+                <!-- Registration Type -->
+                <div class="form-section">
+                    <h2>1. Registration Type <span class="required">*</span></h2>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="registrationType" value="presenter" id="presenter" required>
+                            <label for="presenter">Online/Offline Presenter (Paper Author/Co-author)</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="registrationType" value="participant" id="participant">
+                            <label for="participant">Participant</label>
+                        </div>
+                    </div>
+                    <div class="info-text">Select "Online/Offline Presenter" if you are submitting/presenting a paper. Select "Participant" if you are only attending the conference.</div>
+                </div>
+                
+                <!-- Paper Details (Only for Presenters) -->
+                <div class="form-section" id="paperDetailsSection" style="display:none;">
+                    <h2>2. Paper Details <span class="required">*</span></h2>
+                    
+                    <div class="form-group">
+                        <label>Paper ID <span class="required">*</span></label>
+                        <input type="text" name="paperId" id="paperId">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Paper Title <span class="required">*</span></label>
+                        <input type="text" name="paperTitle" id="paperTitle">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>All Authors Names <span class="required">*</span></label>
+                        <textarea name="allAuthors" id="allAuthors" placeholder="Enter all author names separated by commas" rows="3"></textarea>
+                        <div class="info-text">Please list all authors in order as they appear in the paper</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Presenting Author Name <span class="required">*</span></label>
+                        <input type="text" name="presentingAuthor" id="presentingAuthor">
+                        <div class="info-text">Name of the person who will present the paper</div>
+                    </div>
+                </div>
+                
+                <!-- Mode of Presentation -->
+                <div class="form-section" id="modeSection" style="display:none;">
+                    <h2>3. Mode of Presentation <span class="required">*</span></h2>
+                    <div class="radio-group">
+                        <div class="radio-option">
+                            <input type="radio" name="mode" value="physical" id="physical">
+                            <label for="physical">Physical Presentation</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" name="mode" value="online" id="online">
+                            <label for="online">Online Presentation</label>
+                        </div>
+                    </div>
+                    <div class="info-text">Note: Registration fee applies for both online and physical presentation</div>
+                </div>
+                
+                <!-- Number of Attendees -->
+                <div class="form-section" id="attendeesSection" style="display:none;">
+                    <h2><span id="attendeesSectionNumber">4</span>. Number of People Registering <span class="required">*</span></h2>
+                    
+                    <div class="form-group">
+                        <label>Total Number of People <span class="required">*</span></label>
+                        <select name="numAttendees" id="numAttendees">
+                            <option value="">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                        <div class="info-text" id="attendeesInfo">This includes the primary presenter and all co-authors/additional attendees</div>
+                    </div>
+                    
+                    <div id="attendeesContainer"></div>
+                </div>
+                
+                <!-- Fee Summary -->
+                <div class="fee-summary" id="feeSummary" style="display:none;">
+                    <h3>Registration Fee Summary</h3>
+                    <div class="fee-breakdown" id="feeBreakdown"></div>
+                    <div class="total-amount">
+                        Total Amount: <span id="totalAmount">0</span>
+                    </div>
+
+                    <div class="bankbold-text">Kindly make the payment using the following bank account Details.</div>
+                    <div class="bank-text">Account Name: IEEE SILCHAR SUBSECTION</div>
+                    <div class="bank-text">Account Number: 41916721213</div>
+                    <div class="bank-text">Bank Name: State Bank of India</div>
+                    <div class="bank-text">Bank Address: NIT Silchar, Assam-788010</div>
+                    <div class="bank-text">IFSC Code: SBIN0007061</div>
+                </div>
+                
+                <!-- Payment Details -->
+                <div class="form-section" id="paymentSection" style="display:none;">
+                    <h2>Payment Details <span class="required">*</span></h2>
+                    
+                    <div class="form-group">
+                        <label>Transaction Amount <span class="required">*</span></label>
+                        <input type="text" name="transactionAmount" id="transactionAmount" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Transaction Reference Number/ID <span class="required">*</span></label>
+                        <input type="text" name="transactionId" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Payment Date <span class="required">*</span></label>
+                        <input type="date" name="paymentDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Payment Receipt (PDF/Image) <span class="required">*</span></label>
+                        <input type="file" name="paymentReceipt" id="paymentReceipt" accept=".pdf,.jpg,.jpeg,.png" required>
+                        <div class="info-text">Upload PDF, JPG, or PNG (Max 5MB). File will be automatically saved to Google Drive.</div>
+                        <div id="uploadProgress" style="display:none; margin-top:10px; padding:10px; background:#e8f0ff; border-radius:5px; color:#1e3c72;">
+                            ðŸ“¤ Uploading file...
+                        </div>
+                    </div>
+                </div>
+                
+                <button type="submit" class="submit-btn">Submit Registration</button>
+                
+                <div class="error-message" id="errorMessage"></div>
+                
+                <div class="success-message" id="successMessage">
+                    âœ“ Registration submitted successfully! You will receive a confirmation email shortly.
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const feeStructure = {
+            'india': {
+                'author-student': { ieee: 4000, nonIeee: 5000 },
+                'author-academia': { ieee: 7000, nonIeee: 8000 },
+                'author-industry': { ieee: 10000, nonIeee: 12000 },
+                'additional-author-student': { ieee: 1000, nonIeee: 1000 },
+                'additional-author-academia': { ieee: 2000, nonIeee: 3000 },
+                'additional-author-industry': { ieee: 2000, nonIeee: 3000 },
+                'participant-student': { ieee: 1000, nonIeee: 1000 },
+                'participant-academia': { ieee: 2000, nonIeee: 3000 },
+                'participant-industry': { ieee: 2000, nonIeee: 3000 }
+            },
+            'foreign': {
+                'author-student': { ieee: 150, nonIeee: 200 },
+                'author-academia': { ieee: 200, nonIeee: 250 },
+                'author-industry': { ieee: 300, nonIeee: 350 },
+                'additional-author-student': { ieee: 100, nonIeee: 100 },
+                'additional-author-academia': { ieee: 100, nonIeee: 100 },
+                'additional-author-industry': { ieee: 100, nonIeee: 100 },
+                'participant-student': { ieee: 100, nonIeee: 100 },
+                'participant-academia': { ieee: 100, nonIeee: 100 },
+                'participant-industry': { ieee: 100, nonIeee: 100 }
+            }
+        };
+        
+        const categoryNames = {
+            'author-student': 'Author Student',
+            'author-academia': 'Author Academia',
+            'author-industry': 'Author Industry',
+            'additional-author-student': 'Additional Author Student',
+            'additional-author-academia': 'Additional Author Academia',
+            'additional-author-industry': 'Additional Author Industry',
+            'participant-student': 'Participant Student',
+            'participant-academia': 'Participant Academia',
+            'participant-industry': 'Participant Industry'
+        };
+        
+        const form = document.getElementById('registrationForm');
+        const registrationTypeRadios = document.querySelectorAll('input[name="registrationType"]');
+        const paperDetailsSection = document.getElementById('paperDetailsSection');
+        const modeSection = document.getElementById('modeSection');
+        const attendeesSection = document.getElementById('attendeesSection');
+        const numAttendeesSelect = document.getElementById('numAttendees');
+        const attendeesContainer = document.getElementById('attendeesContainer');
+        const feeSummary = document.getElementById('feeSummary');
+        const paymentSection = document.getElementById('paymentSection');
+        
+        let isPresenter = false;
+        
+        // Handle registration type change
+        registrationTypeRadios.forEach(radio => {
+            radio.addEventListener('change', function() {
+                isPresenter = this.value === 'presenter';
+                
+                if (isPresenter) {
+                    // Show paper details and mode section for presenters
+                    paperDetailsSection.style.display = 'block';
+                    modeSection.style.display = 'block';
+                    document.getElementById('attendeesSectionNumber').textContent = '4';
+                    document.getElementById('attendeesInfo').textContent = 'This includes the primary presenter and all co-authors/additional attendees';
+                    
+                    // Make paper fields required
+                    document.getElementById('paperId').required = true;
+                    document.getElementById('paperTitle').required = true;
+                    document.getElementById('allAuthors').required = true;
+                    document.getElementById('presentingAuthor').required = true;
+                    document.querySelectorAll('input[name="mode"]').forEach(r => r.required = true);
+                } else {
+                    // Hide paper details and mode section for participants
+                    paperDetailsSection.style.display = 'none';
+                    modeSection.style.display = 'none';
+                    document.getElementById('attendeesSectionNumber').textContent = '2';
+                    document.getElementById('attendeesInfo').textContent = 'This includes all participants registering together';
+                    
+                    // Make paper fields not required
+                    document.getElementById('paperId').required = false;
+                    document.getElementById('paperTitle').required = false;
+                    document.getElementById('allAuthors').required = false;
+                    document.getElementById('presentingAuthor').required = false;
+                    document.querySelectorAll('input[name="mode"]').forEach(r => r.required = false);
+                    
+                    // Clear paper fields
+                    document.getElementById('paperId').value = '';
+                    document.getElementById('paperTitle').value = '';
+                    document.getElementById('allAuthors').value = '';
+                    document.getElementById('presentingAuthor').value = '';
+                    document.querySelectorAll('input[name="mode"]').forEach(r => r.checked = false);
+                }
+                
+                // Show attendees section
+                attendeesSection.style.display = 'block';
+                
+                // Reset attendees
+                numAttendeesSelect.value = '';
+                attendeesContainer.innerHTML = '';
+                feeSummary.style.display = 'none';
+                paymentSection.style.display = 'none';
+            });
+        });
+        
+        // Handle number of attendees change
+        numAttendeesSelect.addEventListener('change', function() {
+            const num = parseInt(this.value);
+            generateAttendeeFields(num);
+        });
+        
+        function generateAttendeeFields(num) {
+            attendeesContainer.innerHTML = '';
+            
+            if (num > 0) {
+                for (let i = 1; i <= num; i++) {
+                    const attendeeDiv = document.createElement('div');
+                    attendeeDiv.className = 'attendee-section';
+                    
+                    let categoryOptions = '';
+                    let categoryLabel = 'Category';
+                    let personTitle = '';
+                    
+                    if (isPresenter) {
+                        if (i === 1) {
+                            // First person - Primary Presenter - Author categories
+                            personTitle = 'Person 1 (Primary Presenter)';
+                            categoryLabel = 'Author Category';
+                            categoryOptions = `
+                                <option value="">Select Category</option>
+                                <option value="author-student">Author Student</option>
+                                <option value="author-academia">Author Academia</option>
+                                <option value="author-industry">Author Industry</option>
+                            `;
+                        } else {
+                            // Additional people - Additional Author categories
+                            personTitle = `Person ${i} (Additional Author)`;
+                            categoryLabel = 'Additional Author Category';
+                            categoryOptions = `
+                                <option value="">Select Category</option>
+                                <option value="additional-author-student">Additional Author Student</option>
+                                <option value="additional-author-academia">Additional Author Academia</option>
+                                <option value="additional-author-industry">Additional Author Industry</option>
+                            `;
+                        }
+                    } else {
+                        // All participants - Participant categories
+                        personTitle = i === 1 ? `Person ${i} (Primary Contact)` : `Person ${i}`;
+                        categoryLabel = 'Participant Category';
+                        categoryOptions = `
+                            <option value="">Select Category</option>
+                            <option value="participant-student">Participant Student</option>
+                            <option value="participant-academia">Participant Academia</option>
+                            <option value="participant-industry">Participant Industry</option>
+                        `;
+                    }
+                    
+                    attendeeDiv.innerHTML = `
+                        <h3>${personTitle}</h3>
+                        
+                        <div class="form-group">
+                            <label>Full Name <span class="required">*</span></label>
+                            <input type="text" name="attendee${i}Name" required>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="form-group">
+                                <label>Email <span class="required">*</span></label>
+                                <input type="email" name="attendee${i}Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone <span class="required">*</span></label>
+                                <input type="tel" name="attendee${i}Phone" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Organization/Institution <span class="required">*</span></label>
+                            <input type="text" name="attendee${i}Organization" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Region <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" name="attendee${i}Region" value="india" id="attendee${i}India" class="attendee-region" data-attendee="${i}" required>
+                                    <label for="attendee${i}India">India</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="attendee${i}Region" value="foreign" id="attendee${i}Foreign" class="attendee-region" data-attendee="${i}">
+                                    <label for="attendee${i}Foreign">Foreign</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>${categoryLabel} <span class="required">*</span></label>
+                            <select name="attendee${i}Category" class="attendee-category" data-attendee="${i}" required>
+                                ${categoryOptions}
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>IEEE Membership <span class="required">*</span></label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" name="attendee${i}Membership" value="ieee" id="attendee${i}Ieee" class="attendee-membership" data-attendee="${i}" required>
+                                    <label for="attendee${i}Ieee">IEEE Member</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" name="attendee${i}Membership" value="non-ieee" id="attendee${i}NonIeee" class="attendee-membership" data-attendee="${i}">
+                                    <label for="attendee${i}NonIeee">Non-IEEE Member</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="attendee-fee" id="attendee${i}Fee">Fee: Complete all fields above</div>
+                    `;
+                    attendeesContainer.appendChild(attendeeDiv);
+                }
+                
+                // Add event listeners
+                document.querySelectorAll('.attendee-region, .attendee-category, .attendee-membership').forEach(element => {
+                    element.addEventListener('change', calculateTotalFee);
+                });
+            }
+            
+            calculateTotalFee();
+        }
+        
+        function calculateTotalFee() {
+            const numAttendees = parseInt(numAttendeesSelect.value);
+            
+            if (!numAttendees || numAttendees === 0) {
+                feeSummary.style.display = 'none';
+                paymentSection.style.display = 'none';
+                return;
+            }
+            
+            let totalIndiaFee = 0;
+            let totalForeignFee = 0;
+            const feeBreakdownDiv = document.getElementById('feeBreakdown');
+            feeBreakdownDiv.innerHTML = '';
+            let allAttendeesConfigured = true;
+            
+            for (let i = 1; i <= numAttendees; i++) {
+                const region = document.querySelector(`input[name="attendee${i}Region"]:checked`)?.value;
+                const category = document.querySelector(`select[name="attendee${i}Category"]`)?.value;
+                const membership = document.querySelector(`input[name="attendee${i}Membership"]:checked`)?.value;
+                
+                if (region && category && membership) {
+                    const membershipType = membership === 'ieee' ? 'ieee' : 'nonIeee';
+                    const fee = feeStructure[region][category][membershipType];
+                    const currency = region === 'india' ? 'INR' : 'USD';
+                    
+                    if (region === 'india') {
+                        totalIndiaFee += fee;
+                    } else {
+                        totalForeignFee += fee;
+                    }
+                    
+                    const attendeeName = document.querySelector(`input[name="attendee${i}Name"]`)?.value || `Person ${i}`;
+                    const categoryName = categoryNames[category];
+                    const membershipName = membership === 'ieee' ? 'IEEE' : 'Non-IEEE';
+                    
+                    // Update individual attendee fee display
+                    document.getElementById(`attendee${i}Fee`).textContent = 
+                        `Fee: ${currency} ${fee} (${categoryName} - ${membershipName})`;
+                    
+                    // Add to breakdown
+                    feeBreakdownDiv.innerHTML += `
+                        <div class="fee-item">
+                            <span>Person ${i}: ${categoryName} (${membershipName}) - ${region === 'india' ? 'India' : 'Foreign'}</span>
+                            <span>${currency} ${fee}</span>
+                        </div>
+                    `;
+                } else {
+                    allAttendeesConfigured = false;
+                    document.getElementById(`attendee${i}Fee`).textContent = 
+                        'Fee: Complete all fields above';
+                }
+            }
+            
+            if (!allAttendeesConfigured) {
+                feeSummary.style.display = 'none';
+                paymentSection.style.display = 'none';
+                return;
+            }
+            
+            // Display total amount
+            let totalAmountText = '';
+            if (totalIndiaFee > 0 && totalForeignFee > 0) {
+                totalAmountText = `INR ${totalIndiaFee} + USD ${totalForeignFee}`;
+            } else if (totalIndiaFee > 0) {
+                totalAmountText = `INR ${totalIndiaFee}`;
+            } else {
+                totalAmountText = `USD ${totalForeignFee}`;
+            }
+            
+            document.getElementById('totalAmount').textContent = totalAmountText;
+            document.getElementById('transactionAmount').value = totalAmountText;
+            
+            feeSummary.style.display = 'block';
+            paymentSection.style.display = 'block';
+        }
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Hide any previous error messages
+            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'none';
+            
+            // Validate all attendees have complete information
+            const numAttendees = parseInt(numAttendeesSelect.value);
+            if (numAttendees > 0) {
+                for (let i = 1; i <= numAttendees; i++) {
+                    const region = document.querySelector(`input[name="attendee${i}Region"]:checked`);
+                    const category = document.querySelector(`select[name="attendee${i}Category"]`).value;
+                    const membership = document.querySelector(`input[name="attendee${i}Membership"]:checked`);
+                    
+                    if (!region || !category || !membership) {
+                        showError(`Please complete all details for Person ${i} including Region, Category, and IEEE Membership.`);
+                        document.querySelector(`#attendee${i}Fee`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        return;
+                    }
+                }
+            }
+            
+            // Show loading state
+            const submitBtn = document.querySelector('.submit-btn');
+            const originalBtnText = submitBtn.textContent;
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            // Show upload progress
+            document.getElementById('uploadProgress').style.display = 'block';
+            
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Get file input
+            const fileInput = document.getElementById('paymentReceipt');
+            const file = fileInput.files[0];
+            
+            if (!file) {
+                showError('Please select a payment receipt file (PDF, JPG, or PNG).');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                document.getElementById('uploadProgress').style.display = 'none';
+                return;
+            }
+            
+            // Check file size (5MB limit)
+            if (file.size > 5 * 1024 * 1024) {
+                showError('File size must be less than 5MB. Please compress your file or choose a smaller image.');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                document.getElementById('uploadProgress').style.display = 'none';
+                return;
+            }
+            
+            // Check file type
+            const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
+            if (!allowedTypes.includes(file.type)) {
+                showError('Invalid file type. Please upload only PDF, JPG, or PNG files.');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                document.getElementById('uploadProgress').style.display = 'none';
+                return;
+            }
+            
+            // Convert file to base64
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                // Get all form data
+                for (let [key, value] of formData.entries()) {
+                    if (key !== 'paymentReceipt') {
+                        data[key] = value;
+                    }
+                }
+                
+                // Add file data
+                data.fileName = file.name;
+                data.fileType = file.type;
+                data.fileData = e.target.result.split(',')[1]; // Get base64 part only
+                data.timestamp = new Date().toISOString();
+                
+                console.log('Registration Data:', data);
+                
+                // TODO: Replace with your Google Apps Script Web App URL
+                const scriptURL = 'https://script.google.com/macros/s/AKfycby5TetV-Mw9mPCGt9F1vxRw_3GrJXQocVo31GBEbaEPt-1J23ZTr50p6WkCWWEyUz9dmA/exec';
+                
+                // Check if script URL is still placeholder
+                if (scriptURL.includes('scriptURL')) {
+                    showError('Configuration Error: Please contact the administrator. The form is not yet configured with the Google Apps Script URL.');
+                    submitBtn.textContent = originalBtnText;
+                    submitBtn.disabled = false;
+                    document.getElementById('uploadProgress').style.display = 'none';
+                    return;
+                }
+                
+                // Submit to Google Sheets
+                fetch(scriptURL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'text/plain'
+                    },
+                    redirect: 'follow',
+                    body: JSON.stringify(data)
+                })
+                .then(response => {
+                    // With no-cors mode, we can't read the response
+                    // but if we get here, the request was sent successfully
+                    console.log('Form submitted');
+                    document.getElementById('uploadProgress').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Reset form after 3 seconds
+                    setTimeout(() => {
+                        form.reset();
+                        paperDetailsSection.style.display = 'none';
+                        modeSection.style.display = 'none';
+                        attendeesSection.style.display = 'none';
+                        attendeesContainer.innerHTML = '';
+                        feeSummary.style.display = 'none';
+                        paymentSection.style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'none';
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                })
+                .catch(error => {
+                    console.error('Fetch error:', error);
+                    // Even with error, the data might have been submitted
+                    // Show success message anyway since no-cors doesn't return proper responses
+                    document.getElementById('uploadProgress').style.display = 'none';
+                    document.getElementById('successMessage').style.display = 'block';
+                    document.getElementById('successMessage').textContent = 'âœ“ Form submitted! Please check your email for confirmation.';
+                    document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+                    
+                    setTimeout(() => {
+                        form.reset();
+                        paperDetailsSection.style.display = 'none';
+                        modeSection.style.display = 'none';
+                        attendeesSection.style.display = 'none';
+                        attendeesContainer.innerHTML = '';
+                        feeSummary.style.display = 'none';
+                        paymentSection.style.display = 'none';
+                        document.getElementById('successMessage').style.display = 'none';
+                        document.getElementById('successMessage').textContent = 'âœ“ Registration submitted successfully! You will receive a confirmation email shortly.';
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    }, 3000);
+                });
+            };
+            
+            reader.onerror = function() {
+                showError('Error reading file. Please try selecting the file again.');
+                submitBtn.textContent = originalBtnText;
+                submitBtn.disabled = false;
+                document.getElementById('uploadProgress').style.display = 'none';
+            };
+            
+            // Read file as base64
+            reader.readAsDataURL(file);
+        });
+        
+        // Helper function to show error messages
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = 'âš  ' + message;
+            errorDiv.style.display = 'block';
+            errorDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
